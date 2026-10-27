@@ -1,0 +1,25 @@
+name: Deploy to Cloudflare Pages
+on:
+  push:
+    branches: [main]
+    paths: [site/**, data/analysis.json, scripts/build.mjs]
+  workflow_dispatch:
+permissions:
+  contents: read
+  deployments: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Build (falls back to sample data if no scrape yet)
+        run: |
+          if [ -f data/analysis.json ]; then node scripts/build.mjs; else npm run sample; fi
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=${{ vars.CF_PAGES_PROJECT || 'gyg-market-radar' }}

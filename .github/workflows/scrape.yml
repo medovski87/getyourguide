@@ -1,0 +1,36 @@
+name: Scrape GetYourGuide via Apify
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: "us, eu, or blank for both"
+        required: false
+      max_items:
+        description: "Max listings per city"
+        default: "150"
+  schedule:
+    - cron: "17 5 * * 1"   # weekly, Monday 05:17 UTC
+permissions:
+  contents: write
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Scrape
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          APIFY_ACTOR: ${{ vars.APIFY_ACTOR }}
+          MAX_ITEMS_PER_CITY: ${{ inputs.max_items || '150' }}
+        run: node scripts/scrape.mjs ${{ inputs.region && format('--region {0}', inputs.region) || '' }}
+      - name: Analyze
+        run: node scripts/analyze.mjs
+      - name: Commit data
+        run: |
+          git config user.name "gyg-radar-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "data: refresh scrape $(date -u +%F)"
+          git push

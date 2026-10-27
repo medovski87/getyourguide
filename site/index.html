@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYG Market Radar</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>GetYourGuide Market Radar</h1>
+  <p class="sub">What sells in 10 US and 10 EU cities. <span id="meta"></span></p>
+  <div id="sampleBanner" class="banner" hidden>Showing <b>sample data</b>. Run the scrape workflow with an Apify token to replace it.</div>
+  <nav>
+    <button data-view="overview" class="active">Overview</button>
+    <button data-view="us">US</button>
+    <button data-view="eu">EU</button>
+    <button data-view="cities">City explorer</button>
+    <button data-view="matrix">Category × City</button>
+  </nav>
+</header>
+<main id="app"></main>
+<footer>Demand score = log10(1 + reviews) × Bayesian-adjusted rating. Opportunity index = category share of reviews ÷ share of listings (&gt;1 means demand outpaces supply).</footer>
+<script src="app.js"></script>
+</body>
+</html>

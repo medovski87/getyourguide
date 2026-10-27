@@ -1,0 +1,16 @@
+{
+  "name": "gyg-market-radar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scrapes GetYourGuide via Apify for 10 US + 10 EU cities, analyzes which experiences win, and publishes a dashboard to Cloudflare Pages.",
+  "scripts": {
+    "scrape": "node scripts/scrape.mjs",
+    "analyze": "node scripts/analyze.mjs",
+    "build": "node scripts/build.mjs",
+    "pipeline": "npm run scrape && npm run analyze && npm run build",
+    "sample": "node scripts/sample.mjs && npm run analyze && npm run build",
+    "serve": "npx --yes serve dist"
+  },
+  "engines": { "node": ">=20" }
+}

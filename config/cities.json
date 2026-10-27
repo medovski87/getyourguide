@@ -1,0 +1,26 @@
+{
+  "us": [
+    { "slug": "new-york", "name": "New York", "query": "New York City" },
+    { "slug": "los-angeles", "name": "Los Angeles", "query": "Los Angeles" },
+    { "slug": "las-vegas", "name": "Las Vegas", "query": "Las Vegas" },
+    { "slug": "miami", "name": "Miami", "query": "Miami" },
+    { "slug": "san-francisco", "name": "San Francisco", "query": "San Francisco" },
+    { "slug": "chicago", "name": "Chicago", "query": "Chicago" },
+    { "slug": "orlando", "name": "Orlando", "query": "Orlando" },
+    { "slug": "washington-dc", "name": "Washington DC", "query": "Washington DC" },
+    { "slug": "new-orleans", "name": "New Orleans", "query": "New Orleans" },
+    { "slug": "honolulu", "name": "Honolulu", "query": "Honolulu" }
+  ],
+  "eu": [
+    { "slug": "paris", "name": "Paris", "query": "Paris" },
+    { "slug": "rome", "name": "Rome", "query": "Rome" },
+    { "slug": "barcelona", "name": "Barcelona", "query": "Barcelona" },
+    { "slug": "london", "name": "London", "query": "London" },
+    { "slug": "amsterdam", "name": "Amsterdam", "query": "Amsterdam" },
+    { "slug": "lisbon", "name": "Lisbon", "query": "Lisbon" },
+    { "slug": "berlin", "name": "Berlin", "query": "Berlin" },
+    { "slug": "prague", "name": "Prague", "query": "Prague" },
+    { "slug": "vienna", "name": "Vienna", "query": "Vienna" },
+    { "slug": "athens", "name": "Athens", "query": "Athens" }
+  ]
+}
